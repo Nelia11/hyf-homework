@@ -68,10 +68,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    padding-left: 80px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding: 10px 10px 10px 80px;
     font-size: small;
 }
 .footer > * {
@@ -81,7 +78,7 @@ footer {
 
 #gmap_canvas {
     overflow: hidden;
-    background: none!;
+    background: none;
     height: 250px;
     width: 230px;
 }
@@ -121,11 +118,11 @@ hr {
     width: 140px
 }
 
-/* responsive layout for mobile device; breakpoint: 500px */
+/* responsive layout for mobile device; breakpoint: 375px */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 375px) {
     .wrapper {
-        width: 450px;
+        max-width: 370px;
     }
     .nav {
         margin-top: 20px;
