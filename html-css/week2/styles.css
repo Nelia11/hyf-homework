@@ -118,11 +118,11 @@ hr {
     width: 140px;
 }
 
-/* responsive layout for mobile device; breakpoint: 500px */
+/* responsive layout for mobile device; breakpoint: 400px */
 
 @media only screen and (max-width: 450px) {
     .wrapper {
-        max-width: 450px;
+        max-width: 375px;
     }
     .nav {
         margin-top: 20px;
