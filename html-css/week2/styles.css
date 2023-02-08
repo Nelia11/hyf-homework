@@ -118,7 +118,7 @@ hr {
     width: 140px;
 }
 
-/* responsive layout for mobile device; breakpoint: 400px */
+/* responsive layout for mobile device; breakpoint: 450px */
 
 @media only screen and (max-width: 450px) {
     .wrapper {
