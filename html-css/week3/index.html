@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body>
+    <!-- header of the page -->
+    <header>
+        <h1>Payment details</h1>
+        <h3>Complete the information below to pay online</h3>
+    </header>
+    <form action="" method="get">
+        <div class="form">
+            <!-- header of the form -->
+            <div class="order-top">
+                <h2>Order Summary</h2>
+                <div class="row top">
+                    <p>Total</p>
+                    <p>$333 / month</p>
+                </div>
+                <div class="row bottom">
+                    <p>Total</p>
+                    <p>$100</p>
+                </div>
+            </div>
+            <!-- 2 radio buttons -->
+            <h2>Payment Method</h2>
+            <div class="row-wrap">
+
+                <div class="card radio-button">
+                    <label for="card">
+                        <input 
+                        type="radio" 
+                        name="method" 
+                        id="card" 
+                        value="card" 
+                        checked/>
+                        <div class="payment-method">
+                            <img class="logo-cards" src="/img/logo-cards.png" alt="logos of bank cards"/>
+                            <p>Credit / Debit</p>
+                        </div>
+                    </label>
+                </div>
+
+
+                <div class="paypal radio-button">
+                    <label for="paypal">
+                        <input 
+                        type="radio" 
+                        name="method" 
+                        id="paypal" 
+                        value="paypal" 
+                        checked/>
+                        <div class="payment-method">
+                            <img class="logo-paypal" src="/img/logo-paypal.png" alt="logo of paypal"/>
+                            <p>PayPal</p>
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+            <!-- card details -->
+            <h2>Card Info</h2>
+
+            <div class="main-row">
+                <div class="box card">
+                    <label for="card">Card number</label>
+                    <input
+                    type="text"
+                    name="card"
+                    id="card"
+                    pattern="^\d{4} \d{4} \d{4} \d{4}$"
+                    placeholder="1234 1234 1234 1234"
+                    oninvalid="setCustomValidity('Please enter a valid card number in format: 1234 1234 1234 1234')"  
+                    oninput="setCustomValidity('')"
+                    required/>
+                    <!-- <i class="fa-solid fa-circle-question"></i> -->
+                </div>
+    
+                <div class="secondary-row">
+                    <div class="box date">
+                        <label for="date">Expiry Date</label>
+                        <input
+                        type="text"
+                        name="date"
+                        id="date"
+                        pattern="(0[1-9]|1[0-2])\/(23)|(24)|(25)|(26)|(27)|(28)|(29)|(30)"
+                        oninvalid="setCustomValidity('Expiry date should not be earlier than 01/23')"  
+                        oninput="setCustomValidity('')"
+                        placeholder="MM/YY"
+                        required/>
+                        <!-- <i class="fa-solid fa-circle-question"></i> -->
+                    </div>
+    
+                    <div class="box code">
+                        <label for="code">Security Code</label>
+                        <input
+                        type="text"
+                        name="code"
+                        id="code"
+                        pattern="[^[0-9]{3}$]"
+                        oninvalid="setCustomValidity('Please enter a valid CVV')"  
+                        oninput="setCustomValidity('')"
+                        placeholder="CVV"
+                        required/>
+                        <!-- <i class="fa-solid fa-circle-question"></i> -->
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="main-button">Buy Now</button>
+            <button type="button" class="help-button">Need Help?</button>
+        </div>
+    </form>
+</body>
+</html>

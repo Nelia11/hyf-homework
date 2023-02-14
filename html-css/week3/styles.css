@@ -1,0 +1,221 @@
+body {
+    background-color: whitesmoke;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    max-height: 784px;
+    margin: auto auto;
+    background-color: #FFFFFF;
+}
+/* styles of header of the form */
+.order-top{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #FFFFFF;
+    background: linear-gradient(
+        92.74deg, 
+        #FD7B46 1.15%, 
+        #FE4E9B 98.48%);
+    max-height: 161px;
+}
+.order-top p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+.order-top h2 {
+    padding-left: 20px;
+}
+.order-top .row {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/* line in the middle of the header */
+.bottom {
+    border-top: solid #FFFFFF 1px;
+    font-weight: bold;
+}
+
+.row-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+/* hide radio */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+} 
+.logo-cards{
+    width: 180px;
+    height: 52.5px;
+}   
+.logo-paypal {
+    width: 70px;
+    height: 52.5px;
+}
+/* pointer when cursor is hovering above the radio*/
+[type=radio] + .payment-method {
+    cursor: pointer;
+}
+/* checked styles */
+input[type="radio"]:checked + .payment-method {
+    outline: 4px solid #FE4E9B;
+    border-radius: 10px;
+}      
+/* logo + text in the radio centered vertically and horisontally */
+.payment-method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 370px;
+    height: 110px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background: #FFFFFF;
+}
+.payment-method, .box label {
+    color:#939393;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    line-height: 22px;
+}
+.box [placeholder] {
+    color:#939393;
+    font-family: 'Montserrat' , sans-serif;
+    font-weight: 400;
+    line-height: 22px;
+}
+/* styles of labels for card info  */
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 95px;
+}
+.main-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.secondary-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 21px;
+}
+/* styling of input fields in Card Info section */
+.box input {
+    background-color: #F3F1F2;
+    border: 1px solid #939393;
+    border-radius: 4px;
+    height: 30px;
+    /* position: relative; */
+}
+.card input {
+    width: 342px;
+}
+.date input {
+    width: 122px;
+}
+.code input {
+    width: 180px;
+}
+/* i {
+    position: absolute;
+} */
+.main-button {
+    background: linear-gradient(
+        92.74deg, 
+        #FD7B46 1.15%,
+        #FE4E9B 98.48%);
+        border: none;
+    border-radius: 68px;
+    width: 326px;
+    height: 68px;
+    color: #FFFFFF;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 10px;
+}
+/* pdeudo-class :hover matches when the user interacts with header and button of the form,
+but does not necessarily activate them */
+.main-button:hover, .order-top:hover {
+    background: linear-gradient(
+        92.74deg, 
+        #FE4E9B 1.15%,
+        #FD7B46 98.48%);
+}
+.main-button:active {
+    background-color: green;
+}
+.help-button {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    border: none;
+    background: linear-gradient(
+        91.07deg, 
+    #FE4E9B 32.21%,
+    #FD7B46 67.08%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: transparent;
+}
+@media only screen and (max-width:767px) {
+    .payment-method {
+        width: 250px;
+    }
+}
+@media only screen and (min-width:301px) and (max-width:570px) {
+    .payment-method {
+        width: 130px;
+        height: 110px;
+    }
+    .logo-cards {
+        width: 130px;
+    }
+}
+@media only screen and (max-width:300px) {
+    .form{
+        width: 300px;
+    }
+    .payment-method {
+        width: 120px;
+        height: 110px;
+        justify-content: space-evenly;
+    }
+    .logo-cards {
+        width: 100px;
+        height: 26px;
+    }
+}
