@@ -67,9 +67,30 @@ function getEventWeekday(days) {
         case 6:
             console.log(daysWeek[0]);
             break;
+        }
+        if (isNaN(result) || days === "") {// test for missing argument
+            console.log("Please, enter a date")
+        }
+        return result;
+    
     }
-    return result;
-
-}
-
-getEventWeekday(0)
+    
+    getEventWeekday(0)
+    
+    //Weather wear
+    function getDressed(temp) {
+    
+        if (temp >= 35 || temp <= -20) {
+            console.log("It is better to stay home.");
+        } else if (temp >= 20 && temp < 35) {
+            console.log("shorts and a t-shirt");
+        } else if (temp >= 10 && temp < 20) {
+            console.log("some jeans and a jaket");
+        } else if (temp > -20 && temp < 10) {
+            console.log("It is a sweater weather");
+        } else if (temp === undefined || temp === "") {
+            console.log("Please, enter a temperature");
+        }
+        return temp;
+    }
+    const clothesToWear = getDressed()
