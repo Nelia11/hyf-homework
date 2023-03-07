@@ -29,4 +29,47 @@ getFullname("Benjamin", "Hughes", true); // returns "Lord Benjamin Hughes"`
 getFullname("Benjamin", "Hughes", false); // returns "Benjamin Hughes"
 getFullname(fullname1, fullname2, true, true); // returns Lady fullname1, fullname2
 getFullname(fullname1, fullname2, false, true); // returns fullname1, fullname2
-getFullname("") // alert for blank input
+getFullname(""); // alert for blank input
+
+//Event application
+const daysWeek = [
+    "Monday", 
+    "Tuesday", 
+    "Wednesday", 
+    "Thursday", 
+    "Friday", 
+    "Saturday", 
+    "Sunday"];
+
+function getEventWeekday(days) {
+    let currentDate = new Date(); // date from system 
+    let futureDate = currentDate.getDate() + days; // adding days to current date
+    result = futureDate % 7; // checking with modulo
+    switch (result) { // switch statement 
+        case 0:
+            console.log(daysWeek[1]);
+            break;
+        case 1:
+            console.log(daysWeek[2]);
+            break;
+        case 2:
+            console.log(daysWeek[3]);
+            break;
+        case 3:
+            console.log(daysWeek[4]);
+            break;
+        case 4:
+            console.log(daysWeek[5]);
+            break;
+        case 5:
+            console.log(daysWeek[6]);
+            break;
+        case 6:
+            console.log(daysWeek[0]);
+            break;
+    }
+    return result;
+
+}
+
+getEventWeekday(0)
