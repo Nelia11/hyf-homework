@@ -19,12 +19,18 @@ if (shouldShowResultInDogYears) {
 }
 
 //Housey pricey (A house price estimator)
+function getHousePrice (houseW, houseD, houseH, gardenSizeInM2) {
+    let result = houseW * houseD * houseH * 2.5 * 1000 + gardenSizeInM2 * 300;
+    return result;
+}
+
 let peterHouseW = 8;
 let peterHouseD = 10;
 let peterHouseH = 10;
 let peterGardenSizeInM2 = 100;
 let peterHouseCost = 2500000;
-let peterHousePrice = peterHouseW * peterHouseD * peterHouseH * 2.5 * 1000 + peterGardenSizeInM2 * 300;
+let peterHousePrice = getHousePrice(8, 10, 10, 100);
+//let peterHousePrice = peterHouseW * peterHouseD * peterHouseH * 2.5 * 1000 + peterGardenSizeInM2 * 300;
 let peter = peterHouseCost > peterHousePrice ? "Peter pays too much." : "Peter pays too little.";
 
 let juliaHouseW = 5;
@@ -32,11 +38,12 @@ let juliaHouseD = 11;
 let juliaHouseH = 8;
 let juliaGardenSizeInM2 = 70;
 let juliaHouseCost = 1000000;
-let juliaHousePrice = juliaHouseW * juliaHouseD * juliaHouseH * 2.5 * 1000 + juliaGardenSizeInM2 * 300;
+let juliaHousePrice = getHousePrice(5, 11, 8, 70);
+//let juliaHousePrice = juliaHouseW * juliaHouseD * juliaHouseH * 2.5 * 1000 + juliaGardenSizeInM2 * 300;
 let julia = juliaHouseCost > juliaHousePrice ? "Julia pays too much." : "Julia pays too little.";
 
-console.log(peter)
-console.log(julia)
+console.log(peter);
+console.log(julia);
 
 //Ez Namey (Startup name generator)
 const firstWords = ["Easy", "Awesome", "Green", "Reliable", "Smart", "Perfect", "Subsequent", "Feminist", "Other", "Nothern"];
@@ -61,6 +68,6 @@ if (isItFamily) {
     let totalPrice = pizPrice * pizAmount * 2;
     console.log(`New pizza order: ${pizAmount} ${pizFamily} ${pizName}. Total cost for the order is: $${totalPrice}.`);
 } else {
-    totalPrice = pizPrice * pizAmount;
+    let totalPrice = pizPrice * pizAmount;
     console.log(`New pizza order: ${pizAmount} ${pizMedium} ${pizName}. Total cost for the order is: $${totalPrice}.`);
 }
