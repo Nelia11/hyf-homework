@@ -201,3 +201,72 @@ addActivity("23/7-18", "Instagram", 40);
 addActivity("23/7-18", "Telegram", 51);
 
 showStatus(activities);
+
+//Extra feature 
+function wastedTime(activities) { // calculate % of wasted time from day
+    let totalMins = 0;
+    let dayDurationMins = 24 * 60;
+    
+    for (i = 0; i < activities.length; i++) {
+        totalMins += activities[i].duration;
+    }
+
+    let persentOfDay = ((totalMins / dayDurationMins) * 100).toFixed(1);
+    console.log(`You successfully wasted ${persentOfDay}% of the day!`);
+}
+wastedTime(activities);
+
+//Optional 
+// improved the addActivity
+function addActivityImproved(date = "", activity, duration) { // improved the addActivity
+    if (!date) {
+        date = new Date().toLocaleDateString("en-GB");
+    }
+
+    let actObj = {
+        date,
+        activity,
+        duration,
+    };
+    activities.push(actObj);
+}
+
+addActivityImproved("", "Youtube", 15);
+console.log(activities.at(-1));
+
+// improved the showStatus
+function showStatusImproved(activities) {
+    const activityCountsByDate = {};
+  
+    for (let i = 0; i < activities.length; i++) {
+      const activity = activities[i];
+      if (activityCountsByDate[activity.date] === undefined) {
+        activityCountsByDate[activity.date] = 0;
+      }
+      activityCountsByDate[activity.date]++;
+    }
+  
+    for (const date in activityCountsByDate) {
+      console.log(`The number of activities for ${date} is: ${activityCountsByDate[date]}`);
+    }
+  }
+  showStatusImproved(activities);
+
+// calculating the activity a user has spent the most time on 
+function showActivityWithMaxDuration(activities) {
+    let maxDuration = 0;
+    let maxDurationActivity = null;
+  
+    for (let i = 0; i < activities.length; i++) {
+      const activity = activities[i];
+  
+      if (activity.duration && activity.duration > maxDuration) {
+        maxDuration = activity.duration;
+        maxDurationActivity = activity.activity;
+      }
+    }
+  
+    console.log(`You spent the most time using ${maxDurationActivity}`);
+  }
+
+  showActivityWithMaxDuration(activities);
