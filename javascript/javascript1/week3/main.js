@@ -90,3 +90,38 @@ function logOutSeriesText(seriesDurations) {
   }
   
 logOutSeriesText(seriesDurations);
+
+//NOnoN0nOYes (Note taking app)
+
+//Save a note
+const notes = [];
+
+function saveNote(content, id) {
+  // write some code here
+  return notes.push({content, id});
+}
+
+saveNote("Pick up groceries", 1);
+saveNote("Do laundry", 2);
+
+console.log(notes); // [{content: 'Pick up groceries', id: 1}, {content: 'Do laundry', id: 2}]
+
+//Get a note
+function getNote(id) {
+  // your code here
+  if (id === undefined || isNaN(id)) {
+    return console.error("invalid ID or ID not found");
+  }
+
+  for (let i = 0; i < notes.length; i++) {
+    const note = notes[i];
+    if (note.id === id) {
+    return note;
+    }
+  }
+  return console.error(`Note with ID ${id} not found`)
+
+}
+  const firstNote = getNote(1);
+  console.log(firstNote); // {content: 'Pick up groceries', id: 1}
+  
