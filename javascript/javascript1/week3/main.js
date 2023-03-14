@@ -157,3 +157,47 @@ function jobIsDone(id) { // show note that is done and show notes that remained
 }
 
 jobIsDone(2);
+
+//CactusIO-interactive (Smart phone usage app)
+//Adding an activity
+const activities = [];
+const limitUsage = 180; // usage limit is 180 min
+
+function addActivity(date, activity, duration) {
+    let actObj = {
+        date,
+        activity,
+        duration,
+    };
+    activities.push(actObj);
+}
+showStatus(activities);
+addActivity("23/7-18", "Youtube", 30);
+
+//Show my status
+function showStatus (activities) {
+
+    if (activities.length === 0) {
+        console.error("Add some activities before calling showStatus");
+        return null;
+    }
+
+    let totalAmount = activities.length;
+    let totalMins = 0;
+
+    for (i = 0; i < activities.length; i++) {
+        totalMins += activities[i].duration;
+    }
+
+    console.log(`You have added ${totalAmount} activities. They amount to ${totalMins} min. of usage`);
+    //Usage limit
+    totalMins > limitUsage ? 
+    console.log("You have reached your limit, no more smartphoning for you!") :
+    "";
+}
+
+addActivity("23/7-18", "Facebook", 60);
+addActivity("23/7-18", "Instagram", 40);
+addActivity("23/7-18", "Telegram", 51);
+
+showStatus(activities);
