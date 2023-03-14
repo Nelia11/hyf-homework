@@ -119,9 +119,41 @@ function getNote(id) {
     return note;
     }
   }
-  return console.error(`Note with ID ${id} not found`)
+  return console.error(`Note with ID ${id} not found`);
 
 }
   const firstNote = getNote(1);
   console.log(firstNote); // {content: 'Pick up groceries', id: 1}
   
+//Log out notes
+function logOutNotesFormatted() {
+    // your code here
+    for (i = 0; i < notes.length; i++) {
+    const note = notes[i];
+    console.log(`The note with id ${note.id}, has the following note text: ${note.content}`);
+    }
+    return notes;
+}
+logOutNotesFormatted(); // should log out the text below
+
+// The note with id: 1, has the following note text: Pick up groceries
+// The note with id: 2, has the following note text: Do laundry
+
+// Unique feature 
+function jobIsDone(id) { // show note that is done and show notes that remained
+  if (id === undefined || isNaN(id)) {
+    return console.error("invalid ID or ID not found");
+  }
+
+  for (let i = 0; i < notes.length; i++) {
+    const note = notes[i];
+    if (note.id === id) {
+    notes.splice(i, 1);
+    console.log(`The note with id ${note.id} and content ${note.content} is done!`);
+    return logOutNotesFormatted();
+    }
+  }
+  return console.error(`Note with ID ${id} not found`);
+}
+
+jobIsDone(2);
