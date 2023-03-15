@@ -6,20 +6,30 @@ const names = [
     "Ahmad",
     "Yana",
     "kristina",
+    "Ahmad",
+    "Ahmad",
+    "Ahmad",
+    "Ahmad",
+    "Ahmad",
     "Rasmus",
     "Samuel",
     "katrine",
     "Tala",
-  ];
-  const nameToRemove = "Ahmad";
+];
+const nameToRemove = "Ahmad";
   
 // Write some code here
-for(let i = 0; i < names.length; i++) {
-    if (names[i] === nameToRemove){
+function removeName(nameToRemove) {
+  let i = 0;
+  while (i < names.length) {
+    if (names[i] === nameToRemove) {
         names.splice(i, 1);
-        i--; // decrement the index variable so it does not skip the next item in the array
+    } else {
+      i++; //
     }
+  }
 }
+removeName(nameToRemove);
 // Code done
   
 console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
@@ -31,9 +41,9 @@ const travelInformation = {
   };
 
 function getTime(distance, speed) {
-    let time = (distance / speed) * 60; // convert from hrs to minutes
-    let hours = Math.trunc(time / 60); // get the integer part (full hour)
-    let minutes = time % 60; // get the minutes
+    const time = (distance / speed) * 60; // convert from hrs to minutes
+    const hours = Math.trunc(time / 60); // get the integer part (full hour)
+    const minutes = time % 60; // get the minutes
     return `${hours} hours and ${minutes.toFixed(0)} minutes`;
 }
 
@@ -98,7 +108,7 @@ const notes = [];
 
 function saveNote(content, id) {
   // write some code here
-  return notes.push({content, id});
+  notes.push({content, id});
 }
 
 saveNote("Pick up groceries", 1);
@@ -109,7 +119,7 @@ console.log(notes); // [{content: 'Pick up groceries', id: 1}, {content: 'Do lau
 //Get a note
 function getNote(id) {
   // your code here
-  if (id === undefined || isNaN(id)) {
+  if (isNaN(id)) {
     return console.error("invalid ID or ID not found");
   }
 
@@ -191,9 +201,7 @@ function showStatus (activities) {
 
     console.log(`You have added ${totalAmount} activities. They amount to ${totalMins} min. of usage`);
     //Usage limit
-    totalMins > limitUsage ? 
-    console.log("You have reached your limit, no more smartphoning for you!") :
-    "";
+    totalMins > limitUsage && console.log("You have reached your limit, no more smartphoning for you!");
 }
 
 addActivity("23/7-18", "Facebook", 60);
@@ -212,15 +220,18 @@ function wastedTime(activities) { // calculate % of wasted time from day
     }
 
     let persentOfDay = ((totalMins / dayDurationMins) * 100).toFixed(1);
-    console.log(`You successfully wasted ${persentOfDay}% of the day!`);
+    console.log(`You have successfully wasted ${persentOfDay}% of the day!`);
 }
 wastedTime(activities);
-
+console.log(activities)
 //Optional 
 // improved the addActivity
 function addActivityImproved(date = "", activity, duration) { // improved the addActivity
     if (!date) {
-        date = new Date().toLocaleDateString("en-GB");
+      const d = new Date();
+      date = d.getDate() + "/" + 
+      (d.getMonth()+1) + "-" + 
+      ("" + d.getFullYear()).slice(2);
     }
 
     let actObj = {
