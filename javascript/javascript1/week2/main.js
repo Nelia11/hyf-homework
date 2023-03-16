@@ -119,7 +119,7 @@ const class07Students = [];
 function addStudentToClass(studentName) {
 
     if (!class07Students.includes(studentName) // excludes duplicates
-    && studentName != ``) { //  and does not add an empty string
+    && studentName !== ``) { //  and does not add an empty string
         class07Students.push(studentName);
     } else if (class07Students.includes(studentName)) { // if includes duplicats does not add it
         console.log(`Student ${studentName} is already in the class`);
@@ -127,7 +127,7 @@ function addStudentToClass(studentName) {
 
     if (class07Students.length <= 6 
         && studentName === "Queen") { // always space for Queen
-            class07Students.push();
+            class07Students.push(studentName);
         } else if (class07Students.length > 6 
         && studentName !== "Queen") { // otherwise max.length = 6
             class07Students.length = 6;
@@ -147,14 +147,15 @@ addStudentToClass("Nelia"); // 6
 addStudentToClass("Christian"); // Cannot add more students to class 07
 addStudentToClass("Mathilda"); // Cannot add more students to class 07
 addStudentToClass("Peter"); //  Student Peter is already in the class
-addStudentToClass("Queen"); // adds Queen
+addStudentToClass("Queen"); // add Queen 
+addStudentToClass("Queen"); //Student Queen is already in the class
 
 
-console.log(class07Students)
+
+console.log(class07Students);
 
 function getNumberOfStudents(number) {
-  number = class07Students.length;
-  return number;
+  return class07Students.length;
 }
 console.log(getNumberOfStudents());
 
