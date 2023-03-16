@@ -154,7 +154,7 @@ addStudentToClass("Queen"); //Student Queen is already in the class
 
 console.log(class07Students);
 
-function getNumberOfStudents(number) {
+function getNumberOfStudents(class07Students) {
   return class07Students.length;
 }
 console.log(getNumberOfStudents());
