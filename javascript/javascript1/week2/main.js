@@ -42,19 +42,23 @@ function getFullname(firstname, surname, useFormalName) {
 
 //Event application
 const daysWeek = [
+    "Friday",
     "Saturday",
     "Sunday",
     "Monday", 
     "Tuesday", 
     "Wednesday", 
-    "Thursday", 
-    "Friday" 
+    "Thursday"
     ];
 
 function getEventWeekday(days) {
     let currentDate = new Date().getDay(); // date from system 
     let futureDate = currentDate + days; // adding days to current date
     result = futureDate % 7; // checking with modulo
+
+    if (isNaN(days) || days === "" || days === null) { // test for missing argument
+        console.log("Please, enter a date");
+    } else {
     switch (result) { // switch statement 
         case 0:
             console.log(daysWeek[1]);
@@ -78,14 +82,12 @@ function getEventWeekday(days) {
             console.log(daysWeek[0]);
             break;
         }
-        if (isNaN(result) || days === "") {// test for missing argument
-            console.log("Please, enter a date");
-        }
+    }
         return result;
     
-    }
+}
 
-    getEventWeekday("0");
+    getEventWeekday("1");
     
     //Weather wear
      function getDressed(temp) {
