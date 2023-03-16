@@ -5,31 +5,40 @@ console.log("My username on freeCodeCamp is: Nelia11.")
 let fullname1 = "Nelia";
 let fullname2 = "Levit";
 
-function getFullname(firstname, surname, useFormalName = false, isWoman = false) {
-    if (firstname === "" || surname === "") {
-        alert("Please, enter the name. Can’t be blank or empty !"); // alert for an empty string as firstname and lastname
-    } else if ( useFormalName === true && isWoman === true) {
-        console.log(`Lady ${firstname} ${surname}`); // formal, woman
-    } else if (useFormalName === true && isWoman === false) {
-        console.log(`Lord ${firstname} ${surname}`); // formal, man
-    } else if (useFormalName === false && isWoman === false) {
-        console.log(`${firstname} ${surname}`); // unformal
-    } else if (useFormalName === true) {
-        console.log(`Lord ${firstname} ${surname}`); // formal fullname by default for man
-    } else {
-        console.log(`${firstname} ${surname}`)
+function getFullname(firstname, surname, useFormalName) {
+    if (!firstname || !surname) {
+      console.log("Please, add a valid first name and surname");
     }
-    return `${firstname} ${surname}`;
-}
+    
+    if (useFormalName) {
+      console.log("Lord " + firstname + " " + surname);
+    } else {
+      console.log(firstname + " " + surname);
+    }
+  }
+  
+  getFullname("Benjamin", "Hughes");
+  getFullname(fullname1, fullname2);
+  getFullname("Benjamin", "Hughes", true);
+  getFullname("Benjamin", "Hughes", false);
+  
+  function getFullname(firstname, surname, useFormalName, gender) {
+    if (!firstname || !surname) {
+        console.log("Please, add a valid first name and surname");
+      }
 
-getFullname("Benjamin", "Hughes"); // returns Benjamin Hughes
-getFullname(fullname1, fullname2); // returns fullname1, fullname2
-
-getFullname("Benjamin", "Hughes", true); // returns "Lord Benjamin Hughes"`
-getFullname("Benjamin", "Hughes", false); // returns "Benjamin Hughes"
-getFullname(fullname1, fullname2, true, true); // returns Lady fullname1, fullname2
-getFullname(fullname1, fullname2, false, true); // returns fullname1, fullname2
-getFullname(""); // alert for blank input
+    if (useFormalName) {
+        if (gender === "woman") {
+            console.log("Lady " + firstname + " " + surname);
+        } else {
+            console.log("Lord " + firstname + " " + surname);
+        }
+    } else {
+        console.log(firstname + " " + surname);
+    }
+  }
+  getFullname(fullname1, fullname2, true, "woman");
+  getFullname("Hans", "Andersen", true, "man");
 
 //Event application
 const daysWeek = [
