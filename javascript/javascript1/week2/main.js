@@ -169,7 +169,7 @@ const toffee = 1.1;
 const chewingGum = 0.03;
 
 function addCandy(candyType = sweet, weight = 10) { //default value of parameters
-    result = candyType * weight; // price for selected weight;
+    const result = candyType * weight; // price for selected weight;
     return boughtCandyPrices.push(result); // push result to array
 }
 //add some sweets to array
@@ -181,22 +181,21 @@ console.log(boughtCandyPrices); // prices in array: 22, 21, 0.3
 let amountToSpend = Math.random() * 100; // random number assigned to value we can spend
 console.log(`You can spend up to $${amountToSpend.toFixed(2)}`); // round value to 2 decimals
 
-let sum = 0;
-let i = 0;
-while (i < boughtCandyPrices.length) { // while loop to loop through an array
+function canBuyMoreCandy(boughtCandyPrices) { // check if sum <, <= amountToSpend
+
+    let sum = 0;
+    let i = 0;
+    while (i < boughtCandyPrices.length) { // while loop to loop through an array
     sum = sum + boughtCandyPrices[i]; // each array element would be summed up to the value of sum
     i++;
-}
+    }
 
-console.log(`It will cost $${sum}`); // sum is 43.3
-
-function canBuyMoreCandy(boughtCandyPrices) { // check if sum <, <= amountToSpend
+    console.log(`It will cost $${sum}`); // sum is 43.3
 
     sum < amountToSpend ? 
     console.log("You can buy more, so please do") : 
     console.log("Enough candy for you!");
 
-    return boughtCandyPrices;
 }
 
-canBuyMoreCandy();
+canBuyMoreCandy(boughtCandyPrices);
