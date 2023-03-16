@@ -79,7 +79,7 @@ function getEventWeekday(days) {
             break;
         }
         if (isNaN(result) || days === "") {// test for missing argument
-            console.log("Please, enter a date")
+            console.log("Please, enter a date");
         }
         return result;
     
@@ -88,22 +88,27 @@ function getEventWeekday(days) {
     getEventWeekday("0");
     
     //Weather wear
-    function getDressed(temp) {
+     function getDressed(temp) {
     
-        if (temp >= 35 || temp <= -20) {
-            console.log("It is better to stay home.");
+        if (!temp) {
+            return `Please, enter a temperature`;
+        } else if (isNaN(temp)) {
+            return `Please, enter a number`;
+        } else if (temp >= 35 || temp <= -20) {
+            return `It is better to stay home.`;
         } else if (temp >= 20 && temp < 35) {
-            console.log("shorts and a t-shirt");
+            return `get shorts and a t-shirt`;
         } else if (temp >= 10 && temp < 20) {
-            console.log("some jeans and a jaket");
+            return `your favourite jeans and a jaket`;
         } else if (temp > -20 && temp < 10) {
-            console.log("It is a sweater weather");
-        } else if (temp === undefined || temp === "") {
-            console.log("Please, enter a temperature");
+            return `It is a sweater weather`;
         }
+
         return temp;
     }
-    const clothesToWear = getDressed();
+    const clothesToWear = getDressed("0");
+    console.log(clothesToWear);
+
 
 //Student manager
 const class07Students = [];
