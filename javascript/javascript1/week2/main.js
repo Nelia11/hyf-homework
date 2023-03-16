@@ -42,17 +42,18 @@ function getFullname(firstname, surname, useFormalName) {
 
 //Event application
 const daysWeek = [
+    "Saturday",
+    "Sunday",
     "Monday", 
     "Tuesday", 
     "Wednesday", 
     "Thursday", 
-    "Friday", 
-    "Saturday", 
-    "Sunday"];
+    "Friday" 
+    ];
 
 function getEventWeekday(days) {
-    let currentDate = new Date(); // date from system 
-    let futureDate = currentDate.getDate() + days; // adding days to current date
+    let currentDate = new Date().getDay(); // date from system 
+    let futureDate = currentDate + days; // adding days to current date
     result = futureDate % 7; // checking with modulo
     switch (result) { // switch statement 
         case 0:
@@ -83,8 +84,8 @@ function getEventWeekday(days) {
         return result;
     
     }
-    
-    getEventWeekday(0);
+
+    getEventWeekday("0");
     
     //Weather wear
     function getDressed(temp) {
