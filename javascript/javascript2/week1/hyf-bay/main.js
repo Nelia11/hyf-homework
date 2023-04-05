@@ -1,16 +1,20 @@
 console.log("Script loaded");
 
 const products = getAvailableProducts();
+const ulTag = document.querySelector("ul")
 
 function renderProducts(products) {
-    const ulTag = document.querySelector("ul");
-    for (let i = 0; i < products.length; i++) {
-        const product = products[i];
+    
+    products.forEach(product => {
         const liTag = document.createElement("li");
-        liTag.innerHTML = `<strong>${product.name}</strong> 
-        <br>price: ${product.price} 
-        <br>Rating: ${product.rating}`;
-        ulTag.appendChild(liTag);
-    }
+        liTag.innerHTML = `
+        <ul>
+            <li>${product.name}</li>
+            <li>price: ${product.price}</li>
+            <li>Rating: ${product.rating}</li>
+        </ul>
+    `;
+    ulTag.appendChild(liTag);
+    })
 }
 renderProducts(products);
