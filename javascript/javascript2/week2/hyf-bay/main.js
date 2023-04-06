@@ -46,3 +46,27 @@ function renderFilteredArray (products) {
 }
 renderFilteredArray(products);
 
+const inputPriceTag = document.getElementById("maxPrice");
+inputPriceTag.addEventListener("input", () => renderMaxPrice(products));
+
+function renderMaxPrice(products) {
+    const filteredArray = products.filter(product => product.price <= inputPriceTag.value);
+
+    const ulTag = document.createElement("ul");
+    filteredArray.forEach(product => {
+        const liTag = document.createElement("li");
+        liTag.innerHTML = `
+            <ul>
+              <li>${product.name}</li>
+              <li>Price: ${product.price}</li>
+              <li>Rating: ${product.rating}</li>
+            </ul>
+        `;
+    ulTag.appendChild(liTag);
+    });
+
+    const result = document.querySelector("section ul");
+    result.innerHTML = "";
+    result.appendChild(ulTag);
+}
+
