@@ -46,16 +46,22 @@ selectTag.addEventListener("change", () => renderSortBy(products));
 function renderSortBy(products) {
     const value = selectTag.value;
 
-    if(value === "price") {
-        products.sort((a, b) => a.price - b.price);
-    } else if(value === "name") {
-        products.sort((a, b) => {
-            const nameA = a.name.replace(/"/g, '').toLowerCase();
-            const nameB = b.name.replace(/"/g, '').toLowerCase();
-            return (nameA > nameB) ? 1 : (nameA < nameB) ? -1 : 0;
-        });
-    } else if(value === "rating") {
-        products.sort((a, b) => b.rating - a.rating);
+    switch (value) {
+        case "price": 
+            products.sort((a, b) => a.price - b.price);
+            break;
+        case "name":
+            products.sort((a, b) => {
+                const nameA = a.name.replace(/"/g, '').toLowerCase();
+                const nameB = b.name.replace(/"/g, '').toLowerCase();
+                return (nameA > nameB) ? 1 : (nameA < nameB) ? -1 : 0;
+            });
+            break;
+        case "rating":
+            products.sort((a, b) => b.rating - a.rating);
+            break;
+        default: 
+        return renderProducts(products);
     }
     renderProducts(products);
 }
