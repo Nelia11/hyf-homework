@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.row-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Henny Penny', cursive, sans-serif;
+    text-align: center;
+    font-size: 13vh;
+}
+
+.seconds-input {
+    width: 150px;
+    height: 15px;
+    border: 2px solid purple;
+    border-radius: 7px;
+    background-color: rgb(245, 242, 245);
+    box-shadow: 0px 0px 15px #db54c5;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.start-button {
+    background-color: rgb(226, 174, 226);
+    padding: 20px 60px;
+    font-size: larger;
+    text-transform: uppercase;
+    margin: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.4s ease-in-out;
+}
+
+.start-button:hover {
+    background-color: plum;
+    box-shadow: 0 0 5px plum,
+                0 0 25px plum,
+                0 0 50px plum;
+}
+
+.containerS, .containerL {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 2.5vw;
+}
+#confettiS, #confettiL {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
