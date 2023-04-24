@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit animal name generator</title>
+</head>
+<body>
+    <main>
+        <h1>Spirit animal name generator</h1>
+        <h3>Who are you today?</h3>
+        <form>
+
+            <label for="dropdown">Generate animal when:
+                <select id="dropdown" name="dropdown">
+                    <option value="">select</option>
+                    <option value="click">click button</option>
+                    <option value="hover">hover the input</option>
+                    <option value="isWritten">name is written</option>
+                </select>
+            </label>
+
+            <label for="first-name"> Enter the first name:
+                <input id="input" name="name" type="text" required>
+            </label>
+            <button id="myButton" type="button">Generate</button>
+
+        </form>
+        <p id="output"></p>
+    </main>
+    <script src="./spritAnimalGenerator.js"></script>
+</body>
+</html>
