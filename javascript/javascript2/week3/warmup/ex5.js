@@ -1,4 +1,4 @@
-const btnTag = document.getElementById("btn");
+const btnTag = document.getElementById("btn2");
 const info = document.getElementById("info");
 
 btnTag.addEventListener("click", () => {
