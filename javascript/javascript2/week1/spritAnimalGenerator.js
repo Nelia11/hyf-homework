@@ -2,13 +2,16 @@ const buttonTag = document.getElementById("myButton");
 
 function captureName() {
     const input = document.getElementById("input").value;
-    if (input === "") {
-        document.getElementById("output").innerHTML = "Please enter first name";
-    } else if (/^[a-zA-Z]+$/.test(input)) {
-        document.getElementById("output").innerHTML = input +" - The " + getRandomAnimal(spiritAnimals);
-    } else {
-        document.getElementById("output").innerHTML = "Plese use only letters";
-    }
+    switch (true) {
+        case (input === ""):
+            document.getElementById("output").innerHTML = "Please enter first name";
+            break;
+        case (/^[a-zA-Z]+$/.test(input)):
+            document.getElementById("output").innerHTML = input + " - The " + getRandomAnimal(spiritAnimals);
+            break;
+        default:
+            document.getElementById("output").innerHTML = "Plese use only letters";
+    }    
 }
 
 const selectOption = document.getElementById("dropdown");
@@ -24,14 +27,15 @@ selectOption.addEventListener("change", function(){
             inputTag.removeEventListener("input", captureName);
             break;
         case "hover": 
-            buttonTag.addEventListener("click", captureName);
-            inputTag.removeEventListener("mouseover", captureName);
+            inputTag.addEventListener("mouseover", captureName);
+            buttonTag.removeEventListener("click", captureName);
             inputTag.removeEventListener("input", captureName);
             break;
         case "isWritten": 
             inputTag.addEventListener("input", captureName);
             inputTag.removeEventListener("mouseover", captureName);
             buttonTag.removeEventListener("click", captureName);
+            break;
     }
 })
 
