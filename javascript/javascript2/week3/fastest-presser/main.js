@@ -49,23 +49,24 @@ startGameButton.addEventListener("click", () => {
     setTimeout(() => {
         resultS.innerHTML = `${counterS}`;
         resultL.innerHTML = `${counterL}`;
-        if (counterS > counterL) {
-
-            const jsConfettiS = new JSConfetti({ canvas: canvasS });
-            jsConfettiS.addConfetti();
-
-            startGameButton.innerHTML = `S wins!`;
-        } else if (counterL > counterS) {
-
-            const jsConfettiL = new JSConfetti({ canvas: canvasL });
-            jsConfettiL.addConfetti();
-
-            startGameButton.innerHTML = `L wins!`;
-        } else if (counterS === 0 || counterL === 0) {
-            startGameButton.innerHTML = `You didn't play!`;
-        } else if (counterS === counterL) {
-            startGameButton.innerHTML = `It's a tie!`;
-        }
+        switch(true) {
+            case counterS > counterL:
+              const jsConfettiS = new JSConfetti({ canvas: canvasS });
+              jsConfettiS.addConfetti();
+              startGameButton.innerHTML = `S wins!`;
+              break;
+            case counterL > counterS:
+              const jsConfettiL = new JSConfetti({ canvas: canvasL });
+              jsConfettiL.addConfetti();
+              startGameButton.innerHTML = `L wins!`;
+              break;
+            case counterS === 0 || counterL === 0:
+              startGameButton.innerHTML = `You didn't play!`;
+              break;
+            case counterS === counterL:
+              startGameButton.innerHTML = `It's a tie!`;
+              break;
+          }
 
         isTimerActive = false;
     }, time.at(-1) * 1000);
