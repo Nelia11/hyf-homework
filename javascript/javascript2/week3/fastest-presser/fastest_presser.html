@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css" type="text/css">
+    <title>Fastest_presser</title>
+</head>
+<body>
+    <main>
+
+        <div class="row-wrap">
+            <h1>Fastest presser</h1>
+        </div>
+
+        <form>
+            <div class="wrap-field">
+                <div class="row-wrap">
+                    <label>
+                        <input type="number" id="time" class="seconds-input" required>
+                    </label>
+                    
+                </div>
+        
+                <div class="row-wrap">
+                    <button id="startGame" type="button" class="start-button">Start game!</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row-wrap">
+            <div class="containerS"><p id="s">Press S</p><canvas id="confettiS"></canvas></div>
+            <div class="containerL"><p id="l">Press L</p><canvas id="confettiL"></canvas></div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="plum" fill-opacity="1" d="M0,128L13.3,112C26.7,96,53,64,80,74.7C106.7,85,133,139,160,133.3C186.7,128,213,64,240,74.7C266.7,85,293,171,320,213.3C346.7,256,373,256,400,240C426.7,224,453,192,480,192C506.7,192,533,224,560,224C586.7,224,613,192,640,170.7C666.7,149,693,139,720,133.3C746.7,128,773,128,800,138.7C826.7,149,853,171,880,192C906.7,213,933,235,960,240C986.7,245,1013,235,1040,229.3C1066.7,224,1093,224,1120,197.3C1146.7,171,1173,117,1200,85.3C1226.7,53,1253,43,1280,42.7C1306.7,43,1333,53,1360,58.7C1386.7,64,1413,64,1427,64L1440,64L1440,320L1426.7,320C1413.3,320,1387,320,1360,320C1333.3,320,1307,320,1280,320C1253.3,320,1227,320,1200,320C1173.3,320,1147,320,1120,320C1093.3,320,1067,320,1040,320C1013.3,320,987,320,960,320C933.3,320,907,320,880,320C853.3,320,827,320,800,320C773.3,320,747,320,720,320C693.3,320,667,320,640,320C613.3,320,587,320,560,320C533.3,320,507,320,480,320C453.3,320,427,320,400,320C373.3,320,347,320,320,320C293.3,320,267,320,240,320C213.3,320,187,320,160,320C133.3,320,107,320,80,320C53.3,320,27,320,13,320L0,320Z"></path></svg>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
