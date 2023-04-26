@@ -1,5 +1,5 @@
 const currencies = [];
-const ratesStorage = {};
+const ratesStorage = JSON.parse(localStorage.getItem("ratesStorage")) || {};
 
 const fromSelect = document.getElementById("from-currency");
 const toSelect = document.getElementById("to-currency");
@@ -19,42 +19,37 @@ async function fetchCurrencyRates(base = "EUR") {
         console.error(`Something went wrong: ${err}`);
     } 
 }
-
 async function generateOptions() {
     await fetchCurrencyRates();
-    const htmlOptions = currencies
-    .map((option) => {
-        return `<option value="${option}">${option}</option>`;
-    }).join(" ");
+    currencies.forEach(currency => {
+        const optionFrom = document.createElement("option");
+        optionFrom.setAttribute("value", currency);
+        optionFrom.innerHTML = currency;
+        fromSelect.appendChild(optionFrom);
 
-    fromSelect.innerHTML = htmlOptions;
-    toSelect.innerHTML = htmlOptions;
-    toSelect.value = "DKK";
+        const optionTo = document.createElement("option");
+        optionTo.setAttribute("value", currency);
+        optionTo.innerHTML = currency;
+        toSelect.appendChild(optionTo);
+        toSelect.value = "DKK";
+    })
 }
-
-generateOptions();
+generateOptions()
 
 async function convert(amount, from, to) {
     if(!ratesStorage[from]) {
-        //console.log(`Unable to convert from ${from} to ${to}`);
         const rates = await fetchCurrencyRates(from);
-        //console.log(rates);
         ratesStorage[from] = rates;
+        localStorage.setItem("ratesStorage", JSON.stringify(ratesStorage));
     }
     const rate = ratesStorage[from].rates[to];
     const convertedAmount = rate * amount;
-    //console.log(`${amount} ${from} is ${convertedAmount} in ${to}`);
     return convertedAmount;
 }
-
-//console.log(ratesStorage);
-//convert(10, "EUR", "DKK");
 
 inputTag.addEventListener("input", inputHandler);
 
 async function inputHandler(event) {
-    // console.log(event.target);
-    // console.log(event.currentTarget);
     const amount = await convert(
         inputTag.value, 
         fromSelect.value, 
