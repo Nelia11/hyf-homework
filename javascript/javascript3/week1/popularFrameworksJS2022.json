@@ -1,0 +1,45 @@
+{
+    "kind": "Popular JS Frameworks 2022",
+    "items": [
+        {
+            "name": "Angular",
+            "category": "Front-end",
+            "rank": 2,
+            "isEasyToLearn": false,
+            "pros": ["Open Source", "Single page applications", "Easier DOM manipulation", "Very testable"],
+            "cons": ["Possible performance issues", "Can get complex for larger scenarios", "Some features may be difficult to understand for newcomers"]
+        },
+        {
+            "name": "React",
+            "category": "Front-end",
+            "rank": 1,
+            "isEasyToLearn": true,
+            "pros": ["Easy to learn", "Reusable components", "Virtual DOM", "SEO friendly"],
+            "cons": ["Documentation may be an issue", "JSX is a double-edged sword"]
+        },
+        {
+            "name": "Vue.js",
+            "category": "Front-end",
+            "rank": 3,
+            "isEasyToLearn": null,
+            "pros": ["Lightweight", "Fast", "Extensive documentation", "Reactive two-way binding"],
+            "cons": ["Comparatively fewer components", "Lack of support for large-scale projects", "Overflexibility"]
+        },
+        {
+            "name": "Node.js",
+            "category": "Back-end",
+            "rank": 1,
+            "isEasyToLearn": true,
+            "pros": ["High performance", "Easy to learn", "Scalable", "Active community"],
+            "cons": ["Can be difficult to maintain code", "There are a number of untested or poor quality tools", "Heavy reliance on callbacks"]
+        },
+        {
+            "name": "Next.js",
+            "category": "Back-end",
+            "rank": 2,
+            "isEasyToLearn": null,
+            "pros": ["Server-side rendering", "SEO friendly", "Automatic code splitting", "Hot-code reloading"],
+            "cons": ["built specifically to work with React only", "Requires back-end server side to provide data"]
+        }
+    ]
+}
