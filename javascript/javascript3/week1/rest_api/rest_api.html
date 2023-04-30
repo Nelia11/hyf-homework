@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <h3>REST API: GoogleFonts</h3>
+        <ul>
+            <li>Description: Metadata for all families served by Google Fonts.</li>
+            <li>Kind of data of JSON respond: object with 2 properties.</li>
+            <li>Data structure: </li>
+            <ul>
+                <li>1st key-value pair: key named "kind" and a value is a string "webfonts#webfontList".</li>
+                <li>2nd key-value pair: key named "items" and a value is an array of 1513 objects, which contains objects with information about each font family.:</li>
+                <ul>
+                    <li>"category" (the font category, such as "sans-serif");</li>
+                    <li>"family" (the font family name, such as "Abel");</li>
+                    <li>"files" (an object containing URLs for the font files);</li>
+                    <li>"kind (the kind of object, a webfont object);</li>
+                    <li>"lastModified" (the date the font was last modified);</li>
+                    <li>"menu" (the URL for the font menu);</li>
+                    <li>"subsets" (an array of the font subsets, such as "latin" or "latin-ext");</li>
+                    <li>"variants" (an array of the font variants, such as "regular" or "italic");</li>
+                    <li>"version" (the version of the font).</li>
+                </ul>
+            </ul>
+        </ul>
+
+    </p>
+    <script src="./rest_api.js"></script>
+</body>
+</html>
