@@ -4,7 +4,7 @@ const inputTag = document.getElementById("cityInput");
 const locationBtn = document.getElementById("geolocation");
 const formTag = document.getElementById("search-form");
 
-const mapData = document.getElementById("mapData");
+let map;
 
 const locationData = document.getElementById("location");
 const temperatureData = document.getElementById("temperature");
@@ -16,7 +16,15 @@ const cloudinessData = document.getElementById("cloudiness");
 const sunriseData = document.getElementById("sunrise");
 const sunsetData = document.getElementById("sunset");
 
-//const weather = {};
+function initMap() {}
+
+function initializeMap(lat, lng) {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat, lng },
+    zoom: 10,
+    language: "en",
+  });
+}
 
 const getCoordinatesByCityName = async(cityName) => {
     try {
@@ -72,6 +80,7 @@ async function renderForecastByInput(event) {
         const geoData = await getCoordinatesByCityName(inputTag.value)
         const data = await getWeatherByInput(inputTag.value);
         locationData.innerText = geoData.name;
+        initializeMap(geoData.lat, geoData.lon);
         renderData(data);
         console.log(geoData);
         console.log(data);
@@ -87,10 +96,11 @@ async function renderForecastMyLocation() {
         const position = await getCurrentPosition();
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        console.log(lat, lon)
+        console.log(lat, lon);
         const data = await weather({lat, lon});
         locationData.innerText = `My location: ${data.name}`;
         renderData(data);
+        initializeMap(lat, lon);
     } catch (err) {
         console.log(err);
     }
@@ -106,7 +116,7 @@ function renderData(data) {
     temperatureData.innerText = data.temp.toFixed(0) + "°C";
 
     const iconId = data.icon;
-    iconData.src = `./icons/${iconId}.png`
+    iconData.src = `./icons/${iconId}.png`;
 
     windData.innerText = `Wind: ${data.wind.toFixed(0)} m/s`;
     cloudinessData.innerText = data.cloudiness;
@@ -123,5 +133,5 @@ function renderData(data) {
         hour: "2-digit",
         minute: "2-digit",
     });;
-    sunsetData.innerText = `Sunset: ${sunsetDate}` ;
+    sunsetData.innerText = `Sunset: ${sunsetDate}`;
 }

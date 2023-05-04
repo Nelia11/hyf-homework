@@ -104,7 +104,7 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100%;
     background-color: #c7c7c7;
 }
@@ -133,4 +133,10 @@ svg {
 
 .location {
     font-weight: bold;
+}
+
+.google-map {
+    height: 260px;
+    width: 360px;
+    margin: 10px;
 }
