@@ -1,0 +1,127 @@
+const apiKey = "8a65b2856241112124e36f83f5de5e64";
+
+const inputTag = document.getElementById("cityInput");
+const locationBtn = document.getElementById("geolocation");
+const formTag = document.getElementById("search-form");
+
+const mapData = document.getElementById("mapData");
+
+const locationData = document.getElementById("location");
+const temperatureData = document.getElementById("temperature");
+const iconDiv = document.getElementById("image");
+const iconData = document.createElement("img")
+iconDiv.appendChild(iconData);
+const windData = document.getElementById("wind-speed");
+const cloudinessData = document.getElementById("cloudiness");
+const sunriseData = document.getElementById("sunrise");
+const sunsetData = document.getElementById("sunset");
+
+//const weather = {};
+
+const getCoordinatesByCityName = async(cityName) => {
+    try {
+        const res = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`);
+        const data = await res.json();
+        return {
+            name: data[0].name,
+            country: data[0].country,
+            lat: data[0].lat,
+            lon: data[0].lon,
+        };
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+async function weather(coord) {
+    try {
+        const lat = coord.lat;
+        const lon = coord.lon;
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+        const data = await res.json();
+        console.log(data)
+        return {
+            name: data.name,
+            temp: data.main.temp,
+            icon: data.weather[0].icon,
+            wind: data.wind.speed,
+            cloudiness: data.weather[0].description,
+            sunrise: data.sys.sunrise,
+            sunset: data.sys.sunset,
+        };
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+const getWeatherByInput = async(cityName) => {
+    try {
+        const coord = await getCoordinatesByCityName(cityName);
+        const data = await weather(coord);
+        return data;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+formTag.addEventListener("submit", renderForecastByInput);
+
+async function renderForecastByInput(event) {
+    try{
+        event.preventDefault();
+        const geoData = await getCoordinatesByCityName(inputTag.value)
+        const data = await getWeatherByInput(inputTag.value);
+        locationData.innerText = geoData.name;
+        renderData(data);
+        console.log(geoData);
+        console.log(data);
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+locationBtn.addEventListener("click", renderForecastMyLocation);
+
+async function renderForecastMyLocation() {
+    try {
+        const position = await getCurrentPosition();
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        console.log(lat, lon)
+        const data = await weather({lat, lon});
+        locationData.innerText = `My location: ${data.name}`;
+        renderData(data);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function getCurrentPosition() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+}
+
+function renderData(data) {
+    temperatureData.innerText = data.temp.toFixed(0) + "°C";
+
+    const iconId = data.icon;
+    iconData.src = `./icons/${iconId}.png`
+
+    windData.innerText = `Wind: ${data.wind.toFixed(0)} m/s`;
+    cloudinessData.innerText = data.cloudiness;
+
+    const sunriseTimestamp = data.sunrise;
+    const sunriseDate = new Date(sunriseTimestamp * 1000).toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+    sunriseData.innerText = `Sunrise: ${sunriseDate}`;
+
+    const sunsetTimestamp = data.sunset;
+    const sunsetDate = new Date(sunsetTimestamp * 1000).toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+    });;
+    sunsetData.innerText = `Sunset: ${sunsetDate}` ;
+}
