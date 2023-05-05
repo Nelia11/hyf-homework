@@ -45,7 +45,8 @@ async function weather(coord) {
     try {
         const lat = coord.lat;
         const lon = coord.lon;
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+        const units = "metric";
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`);
         const data = await res.json();
         console.log(data)
         return {
@@ -106,13 +107,18 @@ async function renderForecastMyLocation() {
     }
 }
 
-async function getCurrentPosition() {
+function getCurrentPosition() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject);
     });
 }
 
 function renderData(data) {
+
+    const central = document.getElementById("center");
+    const noData = document.getElementById("no-data");
+    (!!noData && noData.innerText === "No weather data") && central.removeChild(noData);
+
     temperatureData.innerText = data.temp.toFixed(0) + "°C";
 
     const iconId = data.icon;

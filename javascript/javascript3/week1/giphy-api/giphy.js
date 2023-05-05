@@ -5,7 +5,7 @@ const formTag = document.getElementById("formGif");
 const inputAmount = document.getElementById("amount");
 const output = document.getElementById("result");
 
-async function myFun(searchWord, limitGiphs) {
+async function fetchGiphs(searchWord, limitGiphs) {
     try {
         const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchWord}&limit=${limitGiphs}`);
         const obj = await res.json();
@@ -18,7 +18,7 @@ async function myFun(searchWord, limitGiphs) {
 formTag.addEventListener("submit", async (event) => {
     event.preventDefault();
     const searchWord = inputSearch.value;
-    const data = await myFun(searchWord);
+    const data = await fetchGiphs(searchWord);
     renderGifs(data);
 });
 
@@ -26,7 +26,7 @@ inputAmount.addEventListener("input", async (event) => {
     event.preventDefault();
     const searchWord = inputSearch.value;
     const limitGiphs = inputAmount.value;
-    const data = await myFun(searchWord, limitGiphs);
+    const data = await fetchGiphs(searchWord, limitGiphs);
     renderGifs(data);
 });
 

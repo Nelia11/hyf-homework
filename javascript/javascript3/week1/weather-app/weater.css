@@ -113,9 +113,12 @@ svg {
     width: 320px;
     padding: 20px;
     border-radius: 50px;
-    background: #c7c7c7;
-    box-shadow: inset 25px 25px 50px #a9a9a9,
-                inset -25px -25px 50px #e5e5e5;
+    /* background: #c7c7c7; */
+    /* box-shadow: inset 25px 25px 50px #a9a9a9, */
+                /* inset -25px -25px 50px #e5e5e5; */
+
+    /* background: rgb(202,215,218); */
+    background: linear-gradient(360deg, rgba(202,215,218,1) 15%, rgba(52,120,134,1) 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
