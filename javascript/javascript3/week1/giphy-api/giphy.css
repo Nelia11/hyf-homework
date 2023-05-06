@@ -10,6 +10,11 @@ form {
     justify-content: space-evenly;
 }
 
+.number {
+    display: grid;
+    place-items: center;
+}
+
 main div {
     display: flex;
     flex-direction: column;

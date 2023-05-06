@@ -1,8 +1,12 @@
-const apiKey = "8a65b2856241112124e36f83f5de5e64";
+import { openWeatherKey, googleMapsKey } from "../secret.js";
 
 const inputTag = document.getElementById("cityInput");
 const locationBtn = document.getElementById("geolocation");
 const formTag = document.getElementById("search-form");
+
+const script = document.getElementById("weatherScript");
+script.setAttribute("async", "");
+script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}`;
 
 let map;
 
@@ -16,8 +20,6 @@ const cloudinessData = document.getElementById("cloudiness");
 const sunriseData = document.getElementById("sunrise");
 const sunsetData = document.getElementById("sunset");
 
-function initMap() {}
-
 function initializeMap(lat, lng) {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat, lng },
@@ -28,7 +30,7 @@ function initializeMap(lat, lng) {
 
 const getCoordinatesByCityName = async(cityName) => {
     try {
-        const res = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`);
+        const res = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${openWeatherKey}`);
         const data = await res.json();
         return {
             name: data[0].name,
@@ -46,7 +48,7 @@ async function weather(coord) {
         const lat = coord.lat;
         const lon = coord.lon;
         const units = "metric";
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`);
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${units}`);
         const data = await res.json();
         console.log(data)
         return {

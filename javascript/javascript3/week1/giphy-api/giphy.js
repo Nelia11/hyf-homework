@@ -1,4 +1,4 @@
-const apiKey = "qIefXyh2ZIKgEjYtwskhyNd0d6WnpsQ7";
+import { giphyKey } from "../secret.js";
 
 const inputSearch = document.getElementById("search");
 const formTag = document.getElementById("formGif");
@@ -7,7 +7,7 @@ const output = document.getElementById("result");
 
 async function fetchGiphs(searchWord, limitGiphs) {
     try {
-        const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchWord}&limit=${limitGiphs}`);
+        const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${searchWord}&limit=${limitGiphs}`);
         const obj = await res.json();
         return obj.data;
     } catch(err) {

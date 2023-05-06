@@ -1,8 +1,8 @@
-//https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA24Kmj67SU0w5oXTaZPwkaYcvN4WUArYg
+import { googleFontskey } from "../secret.js";
 
-async function myFun() {
+async function fetchData() {
     try{
-        const res = await fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyA24Kmj67SU0w5oXTaZPwkaYcvN4WUArYg");
+        const res = await fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${googleFontskey}`);
         const data = await res.json();
         console.log(data);
     } catch(e) {
@@ -10,4 +10,4 @@ async function myFun() {
     }
 }
 
-myFun();
+fetchData();

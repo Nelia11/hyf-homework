@@ -6,6 +6,8 @@ window.addEventListener("DOMContentLoaded", () => {
     })
 })
 
+import { rapidApiKey } from "../secret.js";
+
 const inputTagName = document.getElementById("inputName");
 const txtAreaMsg = document.getElementById("msg");
 
@@ -20,10 +22,10 @@ const userNames = document.querySelectorAll(".user-name");
 async function sentimentAnalysis(message) {
     const url = `https://twinword-sentiment-analysis.p.rapidapi.com/analyze/?text=${encodeURIComponent(message)}`;
     const options = {
-        method: 'GET',
+        method: "GET",
         headers: {
-            'X-RapidAPI-Key': 'cc50b58122msh6db94dd8136f094p14c905jsn889e7873546e',
-            'X-RapidAPI-Host': 'twinword-sentiment-analysis.p.rapidapi.com'
+            "X-RapidAPI-Key": `${rapidApiKey}`,
+            "X-RapidAPI-Host": "twinword-sentiment-analysis.p.rapidapi.com"
         }
     };
 
