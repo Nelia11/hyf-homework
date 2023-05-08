@@ -6,7 +6,7 @@ const formTag = document.getElementById("search-form");
 
 const script = document.getElementById("weatherScript");
 script.setAttribute("async", "");
-script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}`;
+script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}&callback=initMap`;
 
 let map;
 
@@ -19,6 +19,8 @@ const windData = document.getElementById("wind-speed");
 const cloudinessData = document.getElementById("cloudiness");
 const sunriseData = document.getElementById("sunrise");
 const sunsetData = document.getElementById("sunset");
+
+window.initMap = function() {}
 
 function initializeMap(lat, lng) {
   map = new google.maps.Map(document.getElementById("map"), {
