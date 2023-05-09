@@ -6,32 +6,81 @@ const formGet = document.getElementById("form1");
 const divTag = document.getElementById("box");
 const image = document.createElement("img");
 
-const btnSave = document.getElementById("btn-save");
-const btnCancel = document.getElementById("btn-cancel");
-
 const btnList = document.getElementById("btn-list");
 const myGallery = document.getElementById("gallery")
 
-formGet.addEventListener("submit", getScreenshot);
 
-function getScreenshot(e) {
-    e.preventDefault();
-    image.src = input.value;
-    divTag.appendChild(image);
+async function createScreenshot(url) {
+    const req = {
+        encodedUrl : encodeURIComponent(url),
+        width : screen.width,
+        height : screen.height,
+        fullscreen : true
+    }
+    const screenshotUrl = `https://${env.Xhost}/screenshot?url=${req.encodedUrl}&width=${req.width}&height=${req.height}&fullscreen=${req.fullscreen}`;
+    const options = {
+        method: "GET",
+        headers: {
+            "X-RapidAPI-Key": `${env.Xkey}`,
+            "X-RapidAPI-Host": `${env.Xhost}`
+        }
+    };
+
+    try {
+        const response = await fetch(screenshotUrl, options);
+        const result = await response.json();
+        console.log(result.screenshotUrl);
+        return result.screenshotUrl;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-btnSave.addEventListener("click", saveScreenshot);
+formGet.addEventListener("submit", getScreenshot);
 
-async function saveScreenshot(url, src) {
+async function getScreenshot(e) {
     try {
-        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/screenshots`, {
+        e.preventDefault();
+        const source = await createScreenshot(input.value);
+        image.src = source;
+        console.log(source);
+        divTag.appendChild(image);
+        
+        const btnSave = document.createElement("button");
+        btnSave.innerText = "Save";
+        divTag.appendChild(btnSave);
+    
+        btnSave.addEventListener("click", () => {
+            saveScreenshot();
+            btnSave.style.display = "none";
+            btnCancel.style.display = "none";
+        });
+    
+        const btnCancel = document.createElement("button");
+        btnCancel.innerText = "Cancel";
+        divTag.appendChild(btnCancel);
+    
+        btnCancel.addEventListener("click", () => {
+            cancelScreenshot();
+            btnCancel.style.display = "none";
+            btnSave.style.display = "none";
+        });
+    } catch(e){
+        console.log(e)
+    }
+}
+
+
+async function saveScreenshot() {
+    try {
+        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${env.resource}`, {
             method:"POST",
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify({
                 url: input.value,
-                src: input.value
+                src: await createScreenshot(input.value)
             })
         })
         const data = await res.json();
@@ -42,17 +91,18 @@ async function saveScreenshot(url, src) {
     cancelScreenshot();
 }
 
-btnCancel.addEventListener("click", cancelScreenshot);
-
 function cancelScreenshot() {
     (divTag.contains(image)) && divTag.removeChild(image);
 }
 
-btnList.addEventListener("click", renderGallery);
+btnList.addEventListener("click", () => {
+    myGallery.innerText = "";
+    renderGallery();
+});
 
 async function getList() {
     try {
-        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/screenshots`);
+        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${env.resource}`);
         const data = await res.json();
         console.log(data);
         return data;
@@ -62,9 +112,10 @@ async function getList() {
 }
 
 async function renderGallery() { 
-    myGallery.innerText = "";
+    
     const data = await getList();
-    //console.log(data[0]._id);
+
+    data.length === 0 ? myGallery.innerText = "Your gallery is empty" :
 
     data.forEach(item => {
         const wrapper = document.createElement("div");
@@ -80,7 +131,6 @@ async function renderGallery() {
                 btnDelete.parentNode.remove();
             });
         }
-
 
         image.src = item.src;
 
@@ -99,37 +149,16 @@ function btnCloseAll() {
         const images = myGallery.querySelectorAll("div");
         images.forEach(image => myGallery.removeChild(image));
         btnCloseAll.style.display = "none";
+        myGallery.innerText = "";
     })
 }
 
 async function deleteScreenshot(id) {
     try {
-        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/screenshots/${id}`,{
+        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${env.resource}/${id}`,{
             method: "DELETE"
         });
     } catch(e) {
         console.log(e);
     }
 }
-
-
-// async function test() {
-//     const url = 'https://website-screenshot6.p.rapidapi.com/screenshot?url=https%3A%2F%2Frapidapi.com%2Fmarketplace&width=1920&height=1080&fullscreen=true';
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': 'cc50b58122msh6db94dd8136f094p14c905jsn889e7873546e',
-// 		'X-RapidAPI-Host': 'website-screenshot6.p.rapidapi.com'
-// 	}
-// };
-
-// try {
-// 	const response = await fetch(url, options);
-// 	const result = await response.text();
-// 	console.log(result);
-// } catch (error) {
-// 	console.error(error);
-// }
-// }
-
-// test()

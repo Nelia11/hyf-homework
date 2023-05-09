@@ -7,21 +7,22 @@
     <title>Save Screenshot</title>
 </head>
 <body>
+
     <header>
         <button id="btn-list">My gallery</button>
     </header>
+
     <form id="form1">
-        <label>
-            <input id="inputURL" required>
+        <label for="inputURL">
+            <input id="inputURL" type="url" required>
         </label>
         <button type="submit">Get Screenshot</button>
     </form>
-    <form id="form2">
-        <div id="box"></div>
-        <button id="btn-save" type="button">Save</button>
-        <button id="btn-cancel" type="button">Cancel</button>
-    </form>
+
+    <div id="box"></div>
+
     <div id="gallery"></div>
+    
     <script src="./save-screenshot.js" type="module"></script>
 </body>
 </html>
