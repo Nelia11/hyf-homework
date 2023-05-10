@@ -7,7 +7,10 @@ const divTag = document.getElementById("box");
 const image = document.createElement("img");
 
 const btnList = document.getElementById("btn-list");
-const myGallery = document.getElementById("gallery")
+const myGallery = document.getElementById("gallery");
+
+const loggedUser = JSON.parse((localStorage.getItem("loggedInUser")));
+const username = loggedUser.username;
 
 
 async function createScreenshot(url) {
@@ -73,14 +76,15 @@ async function getScreenshot(e) {
 
 async function saveScreenshot() {
     try {
-        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${env.resource}`, {
+        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${username}`, {
             method:"POST",
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify({
                 url: input.value,
-                src: await createScreenshot(input.value)
+                src: await createScreenshot(input.value),
+                username
             })
         })
         const data = await res.json();
@@ -102,7 +106,7 @@ btnList.addEventListener("click", () => {
 
 async function getList() {
     try {
-        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${env.resource}`);
+        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${username}`);
         const data = await res.json();
         console.log(data);
         return data;
@@ -112,33 +116,35 @@ async function getList() {
 }
 
 async function renderGallery() { 
+    try {
+        const data = await getList();
+
+        !data || data.length === 0 ? myGallery.innerText = "Your gallery is empty" :
     
-    const data = await getList();
-
-    data.length === 0 ? myGallery.innerText = "Your gallery is empty" :
-
-    data.forEach(item => {
-        const wrapper = document.createElement("div");
-        const image = document.createElement("img");
-        wrapper.appendChild(image);
-
-        if(item.src !== "") {
-            const btnDelete = document.createElement("button");
-            btnDelete.innerText = "Delete";
-            wrapper.appendChild(btnDelete);
-            btnDelete.addEventListener("click", () => {
-                deleteScreenshot(item._id)
-                btnDelete.parentNode.remove();
-            });
-        }
-
-        image.src = item.src;
-
-        myGallery.appendChild(wrapper);
-    })
-
-    btnCloseAll();
-
+        data.forEach(item => {
+            const wrapper = document.createElement("div");
+            const image = document.createElement("img");
+            wrapper.appendChild(image);
+    
+            if(item.src !== "") {
+                const btnDelete = document.createElement("button");
+                btnDelete.innerText = "Delete";
+                wrapper.appendChild(btnDelete);
+                btnDelete.addEventListener("click", () => {
+                    deleteScreenshot(item._id)
+                    btnDelete.parentNode.remove();
+                });
+            }
+    
+            image.src = item.src;
+    
+            myGallery.appendChild(wrapper);
+        })
+    
+        btnCloseAll();
+    } catch(e) {
+        console.log(e);
+    }
 }
 
 function btnCloseAll() {
@@ -155,7 +161,7 @@ function btnCloseAll() {
 
 async function deleteScreenshot(id) {
     try {
-        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${env.resource}/${id}`,{
+        const res = await fetch(`https://${env.baseURL}/api/${env.apiToken}/${username}/${id}`,{
             method: "DELETE"
         });
     } catch(e) {
