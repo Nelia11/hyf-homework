@@ -8,25 +8,36 @@
     <title>Login</title>
 </head>
 <body>
-    <form id="login-form">
+    
+    <main>
+        <form id="login-form" class="container">
+            <div class="input-container">
+                <div class="input-content">
+                    <div class="input-dist">
+                        <div class="input-type">
+                            <input id="login-username" placeholder="Username" type="text" class="input-is" required>  
+                            <input id="login-email" placeholder="Email" type="email" class="input-is" required>  
+                            <input id="login-password" placeholder="Password" type="password" class="input-is" required>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <button class="btn" type="submit">
+                <strong>LOGIN</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
+              
+          </form>
+    </main>
 
-        <h2>Login</h2>
-
-        <label for="login-username"> Username:
-            <input id="login-username" type="text" required>
-        </label>
-
-        <label for="login-email"> Email: 
-            <input id="login-email" type="email" required>
-        </label>
-
-        <label for="login-password"> Password: 
-            <input id="login-password" type="password" required>
-        </label>
-
-        <button type="submit">Login</button>
-
-    </form>
     <script src="./login-form.js"></script>
 </body>
 </html>
