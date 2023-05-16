@@ -7,11 +7,13 @@ WHERE due_date IS NULL;
 
 SELECT title
 FROM task
-WHERE status_id = 3;
+JOIN status ON task.status_id = status.id 
+WHERE status.name = "Done";
 
 SELECT title
 FROM task
-WHERE status_id != 3;
+JOIN status ON task.status_id = status.id 
+WHERE status.name != "Done";
 
 SELECT title
 FROM task
