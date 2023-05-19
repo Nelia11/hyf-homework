@@ -1,3 +1,5 @@
+USE `lesson2-data`;
+
 SELECT  user.name, 
 		user.email, 
 		task.title 

@@ -5,11 +5,10 @@ CREATE DATABASE IF NOT EXISTS `SCHOOL_DATABASE`;
 USE `SCHOOL_DATABASE`;
 
 CREATE TABLE `classes` (
-	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    `start_date` DATETIME NOT NULL,
-    `end_date` DATETIME NOT NULL,
-    PRIMARY KEY (`id`)
+	`id` int(5) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(50) NOT NULL,
+    `start_date` DATE NOT NULL,
+    `end_date` DATE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- add a new column to the class table
@@ -19,12 +18,11 @@ ENUM ('not-started', 'ongoing', 'finished')
 NOT NULL DEFAULT 'not-started';
 
 CREATE TABLE `students` (
-	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    `email` varchar(255) NOT NULL,
-    `phone` varchar(255) NOT NULL,
-    `class_id` int(10) unsigned NOT NULL,
-    PRIMARY KEY (`id`),
+	`id` int(5) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(50) NOT NULL,
+    `email` varchar(50) NOT NULL,
+    `phone` varchar(20) NOT NULL,
+    `class_id` int(5) unsigned NOT NULL,
     CONSTRAINT `fk_class` FOREIGN KEY (`class_id`) 	REFERENCES `classes` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -33,8 +31,8 @@ CREATE INDEX `idx_name`
 ON `students` (`name`);
 
 -- classes
-INSERT INTO classes (id, name, start_date, end_date) VALUES (1, 'Class1', '2023-09-01 08:00:00', '2024-05-31 16:00:00');
-INSERT INTO classes (id, name, start_date, end_date) VALUES (2, 'Class2', '2023-10-01 08:00:00', '2024-06-30 16:00:00');
+INSERT INTO classes (id, name, start_date, end_date) VALUES (1, 'Class1', '2023-09-01', '2024-05-31');
+INSERT INTO classes (id, name, start_date, end_date) VALUES (2, 'Class2', '2023-10-01', '2024-06-30');
 
 
 -- students

@@ -1,3 +1,5 @@
+USE `HYF_Lesson_1`;
+
 INSERT INTO task (id, title, description, created, updated, due_date, status_id, user_id)
 VALUES (36, 'Start learning TypeScript', NULL, '2023-05-17 11:57:47', '2023-05-17 12:37:47', '2023-09-30 12:00:00', 1, 5);
 
