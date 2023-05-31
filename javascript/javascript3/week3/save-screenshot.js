@@ -119,7 +119,7 @@ async function renderGallery() {
     try {
         const data = await getList();
 
-        !data || data.length === 0 ? myGallery.innerText = "Your gallery is empty" :
+        myGallery.innerText = !data || data.length === 0 ? "Your gallery is empty" :
     
         data.forEach(item => {
             const wrapper = document.createElement("div");
