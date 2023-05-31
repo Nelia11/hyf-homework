@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./save-screenshot.css">
+    <title>Save Screenshot</title>
+</head>
+<body>
+
+    <header>
+        <button id="btn-list" class="btn-gallery"><span class="text">My gallery</span></button>
+    </header>
+
+    <form id="form1">
+        <div class="input-group">
+            <input id="inputURL" class="input" type="url" required>
+            <input class="button--submit" value="Get screenshot" type="submit">
+        </div>
+    </form>
+
+    <div id="box"></div>
+
+    <div id="gallery" class="gallery"></div>
+    
+    <script src="./save-screenshot.js" type="module"></script>
+</body>
+</html>
