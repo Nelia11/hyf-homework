@@ -7,8 +7,8 @@ FROM
     meal;
 -- Add a new meal
 INSERT INTO meal (id, title, description, location, `when`, max_reservations, price, created_date) 
-VALUES (1, 'Pizza Margarita', 'Pizza with tomato souce and mozarella', 'Kildemarksvej 153', 
-	   CURRENT_TIMESTAMP() + INTERVAL 1 DAY, 2, 39.9, CURDATE());
+VALUES 
+(1, 'Pizza Margarita', 'Pizza with tomato souce and mozarella', 'Kildemarksvej 153', CURRENT_TIMESTAMP() + INTERVAL 1 DAY, 2, 39.9, CURDATE());
 -- Get a meal with any id, fx 1
 SELECT 
     *
@@ -35,7 +35,8 @@ FROM
     reservation;
 -- Add a new reservation
 INSERT INTO reservation (id, number_of_guests, meal_id, created_date, contact_phonenumber, contact_name, contact_email)
-VALUES (1, 2, 1, CURDATE(), '71355896', 'Nick', 'nick4565@gmail.com');
+VALUES 
+(1, 2, 1, CURDATE(), '71355896', 'Nick', 'nick4565@gmail.com');
 -- Get a reservation with any id, fx 1
 SELECT 
     *
@@ -62,7 +63,8 @@ FROM
     review;
 -- Add a new review
 INSERT INTO review (id, title, description, meal_id, stars, created_date) 
-VALUES (1, 'Good', 'All good!', 1, 5, CURDATE() + INTERVAL 2 DAY);
+VALUES 
+(1, 'Good', 'All good!', 1, 5, CURDATE() + INTERVAL 2 DAY);
 -- Get a review with any id, fx 1
 SELECT 
     *
