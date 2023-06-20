@@ -1,5 +1,5 @@
 const knex = require("./database");
-const { validateSortParameter, validateSortColumn } = require("./sanitizeQuery");
+const { validateSortParameter, validateSortColumn } = require("./validateQuery");
 
 const getContacts = async (req, res) => {
     let query = knex.select("*").from("contacts");
