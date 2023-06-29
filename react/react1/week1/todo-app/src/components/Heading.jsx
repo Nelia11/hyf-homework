@@ -1,6 +1,17 @@
-const Heading = () => {
+import Subheading from "./Subheading";
+
+const Heading = ({todos}) => {
+    const count = todos.length;
+    let subheading;
+    if (count > 0) {
+        const noun = count > 1 ? "tasks" : "task";
+        subheading = count + " " + noun;
+    }
     return (
-        <h1>Todo App</h1>
+        <>
+            <h1>Todo App</h1>
+            <Subheading subheading={subheading}/>
+        </>
     );
 };
 
