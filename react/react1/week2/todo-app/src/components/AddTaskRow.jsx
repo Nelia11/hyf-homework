@@ -12,17 +12,21 @@ const AddTaskRow = ({handleAddTodo}) => {
     }
     return (
         <form className="row-field add" onSubmit={addTodo}>
-            <input 
-            type="text"
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            required
-            />
-            <input 
-            type="text"
-            value={deadline}
-            onChange={e => setDeadline(e.target.value)}
-            />
+            <div>
+                <input 
+                type="text"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+                required
+                />
+            </div>
+            <div>
+                <input 
+                type="text"
+                value={deadline}
+                onChange={e => setDeadline(e.target.value)}
+                />
+            </div>
             <div></div>
             <button>Add</button>
         </form>
