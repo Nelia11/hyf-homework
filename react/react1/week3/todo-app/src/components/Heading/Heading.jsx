@@ -1,4 +1,4 @@
-import Subheading from "./Subheading";
+import Subheading from "../Subheading/Subheading";
 
 const Heading = ({todos}) => {
     const count = todos.length;

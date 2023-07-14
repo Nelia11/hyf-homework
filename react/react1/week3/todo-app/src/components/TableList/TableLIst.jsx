@@ -1,10 +1,10 @@
-import TaskRow from "./TaskRow";
-import FancyBorder from "./FancyBorder"
+import TaskRow from "../TaskRow/TaskRow";
+import FancyBorder from "../FancyBorder/FancyBorder"
+import PropTypes from 'prop-types';
 
 const TableList = ({todos, deleteTask, isValidDescription, isValidDate, isLoading}) => {
     return (
         <>
-
             {isLoading ? 
             (<div>Loading...</div>) 
             : todos.length === 0 ?
@@ -23,5 +23,13 @@ const TableList = ({todos, deleteTask, isValidDescription, isValidDate, isLoadin
         </>
     );
 };
+
+TableList.propTypes = {
+    todos: PropTypes.array.isRequired,
+    deleteTask: PropTypes.func,
+    isValidDescription: PropTypes.func,
+    isValidDate: PropTypes.func,
+    isLoading: PropTypes.bool   
+}
 
 export default TableList;

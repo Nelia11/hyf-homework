@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&display=swap');
+
 .App {
   text-align: center;
   display: grid;
@@ -37,4 +39,36 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.row-field {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 0.5fr 0.5fr;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+button {
+  margin: 0 5px;
+}
+
+input {
+  width: auto;
+  margin: 5px;
+  padding: 5px;
+}
+
+h1 {
+  font-family: 'Chango', cursive;
 }

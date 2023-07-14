@@ -1,7 +1,7 @@
 import { useState } from "react";
-import todos from "../todos.json";
 import classes from "./TaskRow.module.css";
 import { DateTime } from "luxon";
+import PropTypes from 'prop-types';
 
 const TaskRow = ({description, deadline, deleteTask, isValidDescription, isValidDate}) => {
     const [isChecked, setIsChecked] = useState(false);
@@ -41,7 +41,7 @@ const TaskRow = ({description, deadline, deleteTask, isValidDescription, isValid
     };
 
     return (
-        <div className="row-field task">
+        <div className="row-field">
             {button === "Edit" ? (
                 <>
                     <div className={checkedClass}>{changeDescription}</div>
@@ -62,9 +62,16 @@ const TaskRow = ({description, deadline, deleteTask, isValidDescription, isValid
                 />
             </div>
             <button onClick={editTask}>{button}</button>
-            <button onClick={() => {deleteTask(todos.id)}}>Delete</button>
+            <button onClick={() => {deleteTask()}}>Delete</button>
         </div>
     );
 };
 
+TaskRow.propTypes = {
+    description: PropTypes.string,
+    deadline: PropTypes.string,
+    deleteTask: PropTypes.func,
+    isValidDescription: PropTypes.func,
+    isValidDate: PropTypes.func
+}
 export default TaskRow;

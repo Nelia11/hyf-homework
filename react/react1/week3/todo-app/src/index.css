@@ -11,26 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.row-field {
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr 0.5fr 0.5fr;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-}
-
-.add {
-  margin: 2rem;
-}
-
-button {
-  margin: 0 5px;
-}
-
-input {
-  width: auto;
-  margin: 5px;
-}
