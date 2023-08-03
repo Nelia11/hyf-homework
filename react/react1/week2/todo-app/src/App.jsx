@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import todos from "./todos.json"
-import './App.css';
+import "./App.css";
 import Heading from './components/Heading';
 import TableTitle from "./components/TableTitle";
 import TableList from "./components/TableLIst";

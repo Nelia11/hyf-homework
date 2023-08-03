@@ -27,7 +27,6 @@ const AddTaskRow = ({handleAddTodo}) => {
                 onChange={e => setDeadline(e.target.value)}
                 />
             </div>
-            <div></div>
             <button>Add</button>
         </form>
     );

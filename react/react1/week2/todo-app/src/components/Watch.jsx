@@ -9,7 +9,7 @@ const Watch = () => {
         }, 1000);
     }, [count]);
 
-    const noun = count >= 2 ? "seconds" : "second";
+    const noun = count === 1 ? "second" : "seconds";
 
     return (
         <>
