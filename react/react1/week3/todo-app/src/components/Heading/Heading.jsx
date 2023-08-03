@@ -2,9 +2,8 @@ import Subheading from "../Subheading/Subheading";
 
 const Heading = ({todos}) => {
     const count = todos.length;
-    let subheading;
-    const noun = count > 1 ? "tasks" : "task";
-    subheading = count + " " + noun;
+    const noun = count === 1 ? "task" : "tasks";
+    let subheading = `${count} ${noun}`;
     return (
         <>
             <h1>Todo App</h1>
