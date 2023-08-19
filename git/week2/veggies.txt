@@ -1,5 +1,7 @@
 1. Tomato
 2. Cucumber
-3. Potato
+3. Sweet potato
 4. Carrot
 5. Beetroot
+6. Cabbage
+7. Onion
