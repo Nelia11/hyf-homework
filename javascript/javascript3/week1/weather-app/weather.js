@@ -52,7 +52,6 @@ async function weather(coord) {
         const units = "metric";
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${units}`);
         const data = await res.json();
-        console.log(data)
         return {
             name: data.name,
             temp: data.main.temp,
@@ -87,8 +86,6 @@ async function renderForecastByInput(event) {
         locationData.innerText = geoData.name;
         initializeMap(geoData.lat, geoData.lon);
         renderData(data);
-        console.log(geoData);
-        console.log(data);
     } catch(err) {
         console.log(err);
     }
@@ -101,7 +98,6 @@ async function renderForecastMyLocation() {
         const position = await getCurrentPosition();
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-        console.log(lat, lon);
         const data = await weather({lat, lon});
         locationData.innerText = `My location: ${data.name}`;
         renderData(data);
